@@ -7,10 +7,16 @@ module.exports = {
     create,
     delete: deleteSkill,
     edit,
+    update,
+};
+
+function update(req, res) {
+    console.log('at controller');
+    SkillList.update(req.params.id, req.body);
+    res.redirect(`/skills/${req.params.id}`);
 }
 
 function edit(req, res) {
-    console.log('at controllers');
     res.render('skills/edit', { skill: SkillList.getOne(req.params.id), title: 'Edit a Skill' });
 }
 

@@ -11,11 +11,18 @@ module.exports = {
     getOne,
     create,
     deleteOne,
-
+    update,
 };
 
-function deleteOne(id) {
+function update(id, newSkill) {
     console.log('made it to models');
+    id = parseInt(id);
+    const skill = skills.find(skill => skill.id === id);
+    // skill.skill = newSkill.skill;
+    Object.assign(skill, newSkill);
+}
+
+function deleteOne(id) {
     // convert id(string) into integer
     id = parseInt(id);
     // iterrate through array to match id with the corresponding id in the skills array, then save as variable

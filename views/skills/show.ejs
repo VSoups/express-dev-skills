@@ -2,7 +2,7 @@
 
 <h3><%= skill.skill %></h3>
 <p>Understood: <%= skill.status ? 'Yes' : 'No' %></p>
-<a href="/skills/<%= skill.id %>/edit?_method" method="GET">Edit Skill</a><br>
+<a href="/skills/<%= skill.id %>/edit" method="GET">Edit Skill</a><br>
 <a href="/skills">Back to skills</a>
 
 <%- include('../partials/footer') %>
