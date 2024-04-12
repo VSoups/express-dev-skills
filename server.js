@@ -3,6 +3,8 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+// method override must be installed through npm and added to our server
+const methodOverride = require('method-override');
 
 const indexRouter = require('./routes/index');
 const skillRouter = require('./routes/skills');
@@ -12,6 +14,8 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+// converts POST requests into DELETE or PUT requests when deleting or updating content
+app.use(methodOverride('_method'));
 
 app.use(logger('dev'));
 app.use(express.json());

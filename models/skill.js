@@ -9,7 +9,29 @@ const skills = [
 module.exports = {
     getAll,
     getOne,
+    create,
+    deleteOne,
+
 };
+
+function deleteOne(id) {
+    console.log('made it to models');
+    // convert id(string) into integer
+    id = parseInt(id);
+    // iterrate through array to match id with the corresponding id in the skills array, then save as variable
+    const idx = skills.findIndex(skill => skill.id === id);
+    // remove with splice
+    skills.splice(idx, 1);
+}
+
+function create(skill) {
+    // creates an id based on Date.now() and sets the id property of the skill object parameter that was passed to this function
+    skill.id = Date.now() % 1000000;
+    // sets status parameter as false automatically since we wouldn't add a completed task to a list
+    skill.status = false;
+    // add to the array
+    skills.push(skill);
+}
 
 function getAll() {
     return skills;
